@@ -6,7 +6,7 @@
     return value;
   };
 
-  // ns-hugo:/home/myitcv/dev/cuelang/cuelabs.dev/assets/ts/widgets/base-widget.ts
+  // ns-hugo:/home/mvdan/src/cue/cuelabs.dev/assets/ts/widgets/base-widget.ts
   var BaseWidget = class {
     element;
     constructor(element) {
@@ -24,7 +24,7 @@
   };
   __publicField(BaseWidget, "NAME");
 
-  // ns-hugo:/home/myitcv/dev/cuelang/cuelabs.dev/assets/ts/widgets/drawer.ts
+  // ns-hugo:/home/mvdan/src/cue/cuelabs.dev/assets/ts/widgets/drawer.ts
   var _Drawer = class extends BaseWidget {
     drawerName;
     closers;
@@ -121,12 +121,13 @@
     });
   }
 
-  // ns-hugo:/home/myitcv/dev/cuelang/cuelabs.dev/assets/ts/widgets/header.ts
+  // ns-hugo:/home/mvdan/src/cue/cuelabs.dev/assets/ts/widgets/header.ts
   var _Header = class extends BaseWidget {
     updateScheduled = false;
     screenWidth;
     headerHeight;
     scrollOffset = 200;
+    // hides after this amount on scroll down
     scrollingDown = true;
     scrollY = 0;
     scrollYOld = 0;
@@ -205,7 +206,7 @@
     });
   }
 
-  // ns-hugo:/home/myitcv/dev/cuelang/cuelabs.dev/assets/ts/helpers/force-focus-position.ts
+  // ns-hugo:/home/mvdan/src/cue/cuelabs.dev/assets/ts/helpers/force-focus-position.ts
   var forceFocusPosition = (element) => {
     let forced = false;
     element.focus();
@@ -222,7 +223,7 @@
     });
   };
 
-  // ns-hugo:/home/myitcv/dev/cuelang/cuelabs.dev/assets/ts/helpers/scroll-to.ts
+  // ns-hugo:/home/mvdan/src/cue/cuelabs.dev/assets/ts/helpers/scroll-to.ts
   var scrollToElement = (element) => {
     if (!element) {
       return false;
@@ -269,11 +270,13 @@
         });
       }
     }
+    // Add widget to widget list
     addWidget(widget) {
       if (!this.widgets.find((w) => w.name === widget.name)) {
         this.widgets.push(widget);
       }
     }
+    // Load widgets in case html container is injected later, accessible via window.app.reloadWidgets
     reLoadWidgets(container) {
       for (const widget of this.widgets) {
         widget.load(container);

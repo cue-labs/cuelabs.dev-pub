@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/myitcv/dev/cuelang/cuelabs.dev",
+	"sourceRoot": "/home/mvdan/src/cue/cuelabs.dev",
 	"sources": [
 		"assets/scss/main.scss",
 		"assets/scss/base/reset.scss",
